@@ -2,6 +2,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
+import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 
 public class EleringJsonApi {
