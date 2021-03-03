@@ -1,9 +1,11 @@
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 
 public class EleringJsonApi {
@@ -21,7 +23,7 @@ public class EleringJsonApi {
     private URL createURL(String base, String endpoint, String start, String end) {
         URL url = null;
         try{
-            URL url = new URL(base+endpoint + "?" + "start=" + start + "&end=" + end);
+            url = new URL(base+endpoint + "?" + "start=" + start + "&end=" + end);
         }catch (MalformedURLException e) {
             System.err.println("URL oli vigane");
             System.err.println("Väljastatud viga: " + e.getMessage());
@@ -29,7 +31,7 @@ public class EleringJsonApi {
         return url;
     }
 
-    public void httpConnection(URL url){
+    public void httpConnection(URL url) throws IOException, ParseException {
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         //Elering API nõuab GET meetodit
