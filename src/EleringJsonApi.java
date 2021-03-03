@@ -40,7 +40,7 @@ public class EleringJsonApi {
         int responsecode = conn.getResponseCode();
 
         if (responsecode != 200) {
-            throw new RuntimeException("HttpResponseCode: " + responsecode);
+            throw new RuntimeException("Http vastuskood vea korral: " + responsecode);
         } else {
             String inline = "";
             Scanner scanner = new Scanner(url.openStream());
