@@ -5,7 +5,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Scanner;
-
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class EleringJsonApi {
@@ -58,8 +59,8 @@ public class EleringJsonApi {
             scanner.close();
 
 //            Using the JSON simple library parse the string into a json object
-//            JSONParser parse = new JSONParser();
-//            JSONObject data_obj = (JSONObject) parse.parse(inline);
+           JSONParser parse = new JSONParser();
+           JSONObject data_obj = (JSONObject) parse.parse(inline);
             return inline;
         }
     }
