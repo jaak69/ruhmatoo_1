@@ -1,37 +1,41 @@
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Scanner;
 
 import org.json.simple.parser.ParseException;
 
 public class EleringJsonApi {
     private String start;
+   // private String startTime;
     private String end;
+    //private String endTime;
     private String restEndPoint;
     private String baseUrl="https://dashboard.elering.ee/";
+    private URL url;
 
     public EleringJsonApi(String start, String end, String restEndPoint) {
         this.start = start;
         this.end = end;
         this.restEndPoint = restEndPoint;
-    }
-
-    private URL createURL(String base, String endpoint, String start, String end) {
-        URL url = null;
+        String urlString;
+        urlString =
+                this.baseUrl + this.restEndPoint + "?" + "start=" + URLEncoder.encode(this.start) + "&end=" + URLEncoder.encode(this.end);
+        System.out.println(urlString);
         try{
-            url = new URL(base+endpoint + "?" + "start=" + start + "&end=" + end);
+            this.url = new URL(urlString);
         }catch (MalformedURLException e) {
             System.err.println("URL oli vigane");
             System.err.println("Väljastatud viga: " + e.getMessage());
         }
-        return url;
     }
 
-    public String httpConnection(URL url) throws IOException, ParseException {
+    public String getEleringData() throws IOException, ParseException {
 
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        HttpURLConnection conn = (HttpURLConnection) this.url.openConnection();
         //Elering API nõuab GET meetodit
         conn.setRequestMethod("GET");
         conn.connect();
@@ -52,8 +56,6 @@ public class EleringJsonApi {
 
             //Sulge scanner
             scanner.close();
-
-            System.out.println("Meetodis: " + inline);
 
 //            Using the JSON simple library parse the string into a json object
 //            JSONParser parse = new JSONParser();

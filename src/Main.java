@@ -1,6 +1,10 @@
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ParseException {
 
         //kas kõik need TODO võiks ka klassi panna ???
         //TODO Riigi valik, mille infot vajame
@@ -13,8 +17,8 @@ public class Main {
 
 
         //klass, mis tõmbab Eleringi API json infot
-        EleringJsonApi info = new EleringJsonApi("2021-02-03 00:00", "2021-02-03 23:59", "/api/nps/price");
-        System.out.println(info);
+        EleringJsonApi info = new EleringJsonApi("2021-02-03 00:01", "2021-02-03 23:59", "api/nps/price");
+        System.out.println(info.getEleringData());
 
         /*while(true){
             //kasutaja sisestus siia menüü number mida ta tahab käivitada
