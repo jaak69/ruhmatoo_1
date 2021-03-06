@@ -15,7 +15,7 @@ public class EleringJsonApi {
     private String end;
     //private String endTime;
     private String restEndPoint;
-    private String baseUrl="https://dashboard.elering.ee/";
+    private String baseUrl="https://dashboard.elering.ee";
     private URL url;
 
     public EleringJsonApi(String start, String end, String restEndPoint) {
