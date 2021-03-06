@@ -3,10 +3,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
-import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
+import org.json.simple.parser.ParseException;
 
 public class EleringJsonApi {
     private String start;
@@ -14,10 +12,10 @@ public class EleringJsonApi {
     private String restEndPoint;
     private String baseUrl="https://dashboard.elering.ee/";
 
-    public EleringJsonApi(String algus, String lõpp, String endpoint) {
-        this.start = algus;
-        this.end = lõpp;
-        this.restEndPoint = endpoint;
+    public EleringJsonApi(String start, String end, String restEndPoint) {
+        this.start = start;
+        this.end = end;
+        this.restEndPoint = restEndPoint;
     }
 
     private URL createURL(String base, String endpoint, String start, String end) {
@@ -31,7 +29,7 @@ public class EleringJsonApi {
         return url;
     }
 
-    public void httpConnection(URL url) throws IOException, ParseException {
+    public String httpConnection(URL url) throws IOException, ParseException {
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         //Elering API nõuab GET meetodit
@@ -55,14 +53,12 @@ public class EleringJsonApi {
             //Sulge scanner
             scanner.close();
 
-            //Using the JSON simple library parse the string into a json object
-            JSONParser parse = new JSONParser();
-            JSONObject data_obj = (JSONObject) parse.parse(inline);
+            System.out.println("Meetodis: " + inline);
 
+//            Using the JSON simple library parse the string into a json object
+//            JSONParser parse = new JSONParser();
+//            JSONObject data_obj = (JSONObject) parse.parse(inline);
+            return inline;
         }
-
-
     }
-
-
 }

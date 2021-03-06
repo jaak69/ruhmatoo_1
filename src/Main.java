@@ -4,18 +4,19 @@ public class Main {
 
         //kas kõik need TODO võiks ka klassi panna ???
         //TODO Riigi valik, mille infot vajame
-        String algus;
+//        String algus;
         //TODO Siia kasutajalt algus kuupäeva ja kellaaja küsimine kujul '2021-01-01 00:00'
-        String lõpp;
+//        String lõpp;
         //TODO Siia kasutajalt lõpu kuupäeva ja kellaaja küsimine kujul '2021-01-01 00:00'
-        String restEndpoint;
+//        String restEndpoint;
         //TODO REST endpointi valik
 
 
         //klass, mis tõmbab Eleringi API json infot
-        EleringJsonApi info = new EleringJsonApi(algus, lõpp, restEndpoint);
+        EleringJsonApi info = new EleringJsonApi("2021-02-03 00:00", "2021-02-03 23:59", "/api/nps/price");
+        System.out.println(info);
 
-        while(true){
+        /*while(true){
             //kasutaja sisestus siia menüü number mida ta tahab käivitada
 
             int menuItemNumber;
@@ -24,6 +25,6 @@ public class Main {
             doSomethingElse();
             System.out.println("some debugging info");
             doAnotherThing();
-        }
+        }*/
     }
 }
