@@ -1,4 +1,7 @@
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import java.util.Iterator;
 
 public class KuvaElektriHind {
 
@@ -6,6 +9,14 @@ public class KuvaElektriHind {
 
     public KuvaElektriHind(JSONObject jsonElering) {
         this.jsonElering = jsonElering;
+    }
+
+    public void loeJson(JSONObject jsonElering){
+        JSONArray country = (JSONArray) jsonElering.get("ee");
+        Iterator<JSONObject> iterator = country.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
     }
 
     public void kuvaHomseElektriHinnaTabel(){
