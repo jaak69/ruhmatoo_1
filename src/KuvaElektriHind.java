@@ -13,7 +13,7 @@ public class KuvaElektriHind {
     }
 
     public void kuvaMaxMinElektriHind(){
-
+        //System.out.println(JSONObject jsonElering);
         //Kuvab valitud perioodil 3 min hinda koos kuupäevaga ja 3 max hinda koos kuuupäevaga
 
     }
