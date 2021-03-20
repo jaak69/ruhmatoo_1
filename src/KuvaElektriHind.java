@@ -8,11 +8,13 @@ public class KuvaElektriHind {
         this.jsonElering = jsonElering;
     }
 
-    public void kuvaElektriHinnaTabel(){
+    public void kuvaHomseElektriHinnaTabel(){
 
     }
 
     public void kuvaMaxMinElektriHind(){
+
+        //Kuvab valitud perioodil 3 min hinda koos kuupäevaga ja 3 max hinda koos kuuupäevaga
 
     }
 
