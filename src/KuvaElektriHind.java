@@ -18,6 +18,7 @@ public class KuvaElektriHind {
 
     }
 
+
     public void kuvaSuvalineElektriHind(){
 
     }
