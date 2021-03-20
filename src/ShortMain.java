@@ -1,6 +1,9 @@
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class ShortMain {
@@ -58,6 +61,13 @@ public class ShortMain {
         EleringJsonApi info = new EleringJsonApi(algusKuupäev, lõpuKuupäev, restEndPoint);
         System.out.println(info.getEleringData());
 
+        // Proov leida timestam'ist tund ja kuupäev
+        int prooviaeg = 1616115600;
+        String hourFromTimestamp = new SimpleDateFormat("H").format(new Date(prooviaeg*1000L));
+        String dateFromTimestamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date(prooviaeg*1000L));
+        System.out.println(hourFromTimestamp);
+        System.out.println(dateFromTimestamp);
+
         KuvaElektriHind  proov = new KuvaElektriHind(info.getEleringData());
 
 
@@ -72,4 +82,5 @@ public class ShortMain {
             doAnotherThing();
         }*/
     }
+
 }
