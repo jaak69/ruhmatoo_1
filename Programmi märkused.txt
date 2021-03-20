@@ -6,5 +6,7 @@ Programi teoimingud
 3   Näita suvalise kuupäeval nelja erineva elektrituru hindade võrdlust
 4   Lõpeta programmi töö
 
-2a  Näita ühe määratud kuu elektrihindu tabelina (?)
+2a  Näita ühe määratud kuu elektrihindu tabelina (Kas on vaja/mõtet?)
 
+Muud märkused:
+Elering annab elektri hinna E/MWh, et tavakasutajale hind reaalsemana paistaks, tuleks see ümber konvertida senti/kWh
