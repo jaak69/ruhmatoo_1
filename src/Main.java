@@ -6,9 +6,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException, ParseException {
 
-        public String apiEndPoint;
-        public boolean kuupäevaKontroll;
-        public String restEndPoint = "/api/nps/price";
+        String apiEndPoint;
+        boolean kuupäevaKontroll;
+        String restEndPoint = "/api/nps/price";
 
         System.out.println("Programm - Elektrihinnad soovitud ajavahemikul.");
         System.out.println("Programm väljastab:");
