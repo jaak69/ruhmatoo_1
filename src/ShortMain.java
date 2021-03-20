@@ -1,8 +1,12 @@
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
-public class Main {
+public class ShortMain {
 
     public static void main(String[] args) throws IOException, ParseException {
 
@@ -14,11 +18,11 @@ public class Main {
         System.out.println("Programm väljastab:");
 
         //Lähteandmete küsimine kasutajalt
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Sisesta perioodi alguskuupäev kujul \"2021-01-01 20:00\":");
-        String algusKuupäev = scan.nextLine();
-        System.out.println("Sisesta perioodi lõpukuupäev kujul \"2021-01-01 20:00\":");
-        String lõpuKuupäev = scan.nextLine();
+        //Scanner scan = new Scanner(System.in);
+        //System.out.println("Sisesta perioodi alguskuupäev kujul \"2021-01-01 20:00\":");
+        String algusKuupäev = "2021-03-19 00:00";
+        //System.out.println("Sisesta perioodi lõpukuupäev kujul \"2021-01-01 20:00\":");
+        String lõpuKuupäev = "2021-03-19 23:59";
 
         //Sisestud kuupäevade konroll.
         //Alguskuupöev peab olema varase kui lõpukuupäev
@@ -37,7 +41,7 @@ public class Main {
         System.out.println("2. Soovin kõige kallimat ja odavamt elektri kWh hinda minu valitud kuupäevade vahemikus.");
         System.out.println("3. Näita suvalise kuupäeva elektrihinda.");
         System.out.println("4. Lõpeta programmi töö.");
-        int valik = scan.nextInt();
+        int valik = 1;
 
         switch(valik) {
             case 1:
@@ -57,8 +61,16 @@ public class Main {
         EleringJsonApi info = new EleringJsonApi(algusKuupäev, lõpuKuupäev, restEndPoint);
         System.out.println(info.getEleringData());
 
-        //KuvaElektriHind proov = new KuvaElektriHind(info.getEleringData());
-        //System.out.println(proov);
+        // Proov leida timestam'ist tund ja kuupäev
+        int prooviaeg = 1616115600;
+        String hourFromTimestamp = new SimpleDateFormat("H").format(new Date(prooviaeg*1000L));
+        String dateFromTimestamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date(prooviaeg*1000L));
+        System.out.println(hourFromTimestamp);
+        System.out.println(dateFromTimestamp);
+
+        KuvaElektriHind  proov = new KuvaElektriHind(info.getEleringData());
+
+
         /*while(true){
             //kasutaja sisestus siia menüü number mida ta tahab käivitada
 
@@ -70,4 +82,5 @@ public class Main {
             doAnotherThing();
         }*/
     }
+
 }
