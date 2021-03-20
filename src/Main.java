@@ -57,6 +57,8 @@ public class Main {
         EleringJsonApi info = new EleringJsonApi(algusKuupäev, lõpuKuupäev, restEndPoint);
         System.out.println(info.getEleringData());
 
+        KuvaElektriHind proov = new KuvaElektriHind(info.getEleringData());
+        System.out.println(proov);
         /*while(true){
             //kasutaja sisestus siia menüü number mida ta tahab käivitada
 
