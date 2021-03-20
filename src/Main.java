@@ -24,7 +24,7 @@ public class Main {
         //Alguskuupöev peab olema varase kui lõpukuupäev
         //Kuupäevade vahe ei tohi olla suurm kui 365 päeva
         //Sisestatud kuupäeva vale formaadikorral kuvatakse veateade
-        SisestatudKuupäevadeKontroll kont = new SisestatudKuupäevadeKontroll("2021-01-01","2021-01-01 22:00");
+        SisestatudKuupäevadeKontroll kont = new SisestatudKuupäevadeKontroll(algusKuupäev,lõpuKuupäev);
         try {
             Boolean kuupäevadeKontroll = kont.kuupäevadeKontroll();
         } catch (java.text.ParseException e) {
