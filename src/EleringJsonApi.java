@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -34,7 +33,7 @@ public class EleringJsonApi {
         }
     }
 
-    public String getEleringData() throws IOException, ParseException {
+    public JSONObject getEleringData() throws IOException, ParseException {
 
         HttpURLConnection conn = (HttpURLConnection) this.url.openConnection();
         //Elering API nõuab GET meetodit
@@ -61,7 +60,7 @@ public class EleringJsonApi {
 //            Using the JSON simple library parse the string into a json object
            JSONParser parse = new JSONParser();
            JSONObject data_obj = (JSONObject) parse.parse(inline);
-            return inline;
+            return data_obj;
         }
     }
 }

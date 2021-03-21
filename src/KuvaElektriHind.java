@@ -15,7 +15,7 @@ public class KuvaElektriHind {
         JSONArray country = (JSONArray) jsonElering.get("ee");
         Iterator<JSONObject> iterator = country.iterator();
         while (iterator.hasNext()){
-            System.out.println(iterator.next());
+            System.out.println("Järgmine: 2" + iterator.next());
         }
     }
 
