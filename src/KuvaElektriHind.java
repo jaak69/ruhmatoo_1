@@ -9,9 +9,6 @@ public class KuvaElektriHind {
     private JSONObject jsonElering;
     private JSONArray maaEE;
 
-
-    Elektrihind eesti = new Elektrihind();
-
     // List elektritarbimise andmetega
     private ArrayList<Elektrihind> elektrihind = new ArrayList<>();
 
@@ -21,34 +18,40 @@ public class KuvaElektriHind {
     // List alumise top 3 salvestamiseks
     private ArrayList<Elektrihind> põhjad = new ArrayList<>();
 
-    public void kuvaHomseElektriHinnaTabel(){
+    public void kuvaHomseElektriHinnaTabel(JSONObject statesJson, String riik){
+
+        // Loeb JSON objektist andmed
+        loeJson(statesJson, riik);
+
+        // Väljastab andmed
+        System.out.println("---------------------------------------");
+        System.out.println("| Järgneva 24 tunni elektrihinnad     |");
+        System.out.println("---------------------------------------");
+        for (int i = 0; i < elektrihind.size();i++){
+            System.out.println("|  " + elektrihind.get(i).getAeg() + "     |     " + elektrihind.get(i).getHind() + "    |");
+        }
+        System.out.println("---------------------------------------");
     }
 
     public void määratudVahemikuMinMax(JSONObject statesJson, String riik){
 
-        // loen JSON objektist andmed
+        // Loeb JSON objektist andmed
         loeJson(statesJson, riik);
 
-        // Määran top'i pikkuse
+        // Määrab top'i pikkuse
         int topPikkus = 1;
 
-        // Leian top 3 elektrihinnad
+        // Leiab top 3 elektrihinnad
         topUp(topPikkus);
 
-        // Leian madalamad 3 elektrihinda
+        // Leiab madalamad 3 elektrihinda
         topDown(topPikkus);
 
-        // Väljastan andmed
+        // Väljastab andmed
         System.out.println("---------------------------------------------------------------");
         System.out.println("|     Kõrgeim(ad) hin(na)d     |     Madalaim(ad) hin(na)d    |");
         System.out.println("---------------------------------------------------------------");
-
-        // Näitan nii mitme anmde komplekti kui pikk on lühim top
-        int ridu = tipud.size();
-        if (põhjad.size() < tipud.size()){
-            ridu = põhjad.size();
-        }
-        for (int i = 0; i < ridu; i++){
+        for (int i = 0; i < topPikkus; i++){
             System.out.println("| " + tipud.get(i).getAeg() + "   -   " + tipud.get(i).getHind() + "  | " + põhjad.get(i).getAeg() + "   -   " + põhjad.get(i).getHind() + "  |");
         }
         System.out.println("---------------------------------------------------------------");

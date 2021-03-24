@@ -62,12 +62,14 @@ public class Main {
             case 2:
                 //Määra algusaeg päringu hetkest + 24H
                 kuupäevadeVahemik.getHomnePäev();
+
                 //Käivita kasutaja sisestatud kuupäevadega Eleringi päring
                 eleringInfo.setStart(kuupäevadeVahemik.getAlgusKuuPäev());
                 eleringInfo.setEnd(kuupäevadeVahemik.getLõppKuuPäev());
                 data = eleringInfo.getEleringData();
-                //Käivita KuvaElektrihind vajalik meetod, mis tagastab soovitud kujul elektrihinnad
 
+                //Käivita KuvaElektrihind vajalik meetod, mis tagastab soovitud kujul elektrihinnad
+                elektriHind.kuvaHomseElektriHinnaTabel((JSONObject) data.get("data"),"ee");
 
 
 
