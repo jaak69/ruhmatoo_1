@@ -17,7 +17,7 @@ public class KuvaElektriHind {
 
     public void loeJson(String maa){
         //JSONObject dataMaa = (JSONObject) jsonElering.get("ee");      // 2021-03-2
-        JSONObject dataMaa = (JSONObject) jsonElering.get(maa);
+        JSONArray dataMaa = (JSONArray) jsonElering.get(maa);
 
         System.out.println(dataMaa);
 
