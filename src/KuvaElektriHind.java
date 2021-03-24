@@ -23,12 +23,29 @@ public class KuvaElektriHind {
         // Loeb JSON objektist andmed
         loeJson(statesJson, riik);
 
+        // Määrab top'i pikkuse
+        int topPikkus = 3;
+
+        // Leiab top 3 elektrihinnad
+        topUp(topPikkus);
+
+        // Leiab madalamad 3 elektrihinda
+        topDown(topPikkus);
+
         // Väljastab andmed
         System.out.println("---------------------------------------");
         System.out.println("| Järgneva 24 tunni elektrihinnad     |");
         System.out.println("---------------------------------------");
-        for (int i = 0; i < elektrihind.size();i++){
-            System.out.println("|  " + elektrihind.get(i).getAeg() + "     |     " + elektrihind.get(i).getHind() + "    |");
+        System.out.println("| Kõrgeimad                           |");
+        System.out.println("---------------------------------------");
+        for (int i = 0; i < tipud.size();i++){
+            System.out.println("|  " + tipud.get(i).getAeg() + "     |     " + tipud.get(i).getHind() + "    |");
+        }
+        System.out.println("---------------------------------------");
+        System.out.println("| Madalaimad                          |");
+        System.out.println("---------------------------------------");
+        for (int i = 0; i < põhjad.size();i++){
+            System.out.println("|  " + põhjad.get(i).getAeg() + "     |     " + põhjad.get(i).getHind() + "    |");
         }
         System.out.println("---------------------------------------");
     }
@@ -41,10 +58,10 @@ public class KuvaElektriHind {
         // Määrab top'i pikkuse
         int topPikkus = 1;
 
-        // Leiab top 3 elektrihinnad
+        // Leiab top n elektrihinnad
         topUp(topPikkus);
 
-        // Leiab madalamad 3 elektrihinda
+        // Leiab madalamad n elektrihinda
         topDown(topPikkus);
 
         // Väljastab andmed
@@ -57,7 +74,32 @@ public class KuvaElektriHind {
         System.out.println("---------------------------------------------------------------");
     }
 
-    public void kuvaSuvalineElektriHind(){
+    public void kuvaSuvalineElektriHind(JSONObject statesJson){
+        // Loeb andmed Eesti kohta
+        loeJson(statesJson,"ee");
+        ArrayList<Elektrihind> eesti = (ArrayList<Elektrihind>) elektrihind.clone();
+        elektrihind.clear();
+        // Loeb andmed Läti kohta
+        loeJson(statesJson,"lv");
+        ArrayList<Elektrihind> läti = (ArrayList<Elektrihind>) elektrihind.clone();
+        elektrihind.clear();
+        // Loeb andmed Leedu kohta
+        loeJson(statesJson,"lt");
+        ArrayList<Elektrihind> leedu = (ArrayList<Elektrihind>) elektrihind.clone();
+        elektrihind.clear();
+        // Loeb andmed Soome kohta
+        loeJson(statesJson,"fi");
+        ArrayList<Elektrihind> soome = (ArrayList<Elektrihind>) elektrihind.clone();
+        elektrihind.clear();
+
+        // Väljastab andmed
+        System.out.println("------------------------------------------------------------------------------------");
+        System.out.println("| Aeg                  |     Eesti    |     Läti     |     Leedu    |     Soome    |");
+        System.out.println("------------------------------------------------------------------------------------");
+        for (int i = 0; i < eesti.size(); i++){
+            System.out.println("|   " + eesti.get(i).getAeg() + "   |      " + eesti.get(i).getHind() + "    |      " + läti.get(i).getHind() + "    |      " + leedu.get(i).getHind() + "    |      " + soome.get(i).getHind() + "    |");
+        }
+        System.out.println("------------------------------------------------------------------------------------");
     }
 
     //Loeb Json objektist andmed ja lisab need Elektrihind klassi alusel listi elektrihind

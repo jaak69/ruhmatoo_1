@@ -31,11 +31,11 @@ public class Main {
 
         KuvaElektriHind elektriHind = new KuvaElektriHind();
 
-        System.out.println("Vali mis infot sa soov2id Eleringist saada. Valiku kinnitamiseks sisesta\n loetelu ees " +
+        System.out.println("Vali mis infot sa soovid Eleringist saada. Valiku kinnitamiseks sisesta\n loetelu ees " +
                 "olev järjenumber");
         System.out.println("1. Määratud perioodi kõrgeim ja madalamim hind.");
         System.out.println("2. Näita järgmise 24 tunni 3 kõrgemat ja 3 madalamat tunnihinda.");
-        //System.out.println("3. Näita suvalise kuupäeva elektrihinda.");
+        System.out.println("3. Näita suvalise kuupäeva elektrihinda.");
         System.out.println("4. Lõpeta programmi töö.");
         //Salvesta kasutaja valik1
         int valik = scan.nextInt();
@@ -79,6 +79,14 @@ public class Main {
                 break;
             case 3:
                 // code block
+                // lisan case 2 järgi järgmise 24h andmed
+                kuupäevadeVahemik.getHomnePäev();
+                eleringInfo.setStart(kuupäevadeVahemik.getAlgusKuuPäev());
+                eleringInfo.setEnd(kuupäevadeVahemik.getLõppKuuPäev());
+                data = eleringInfo.getEleringData();
+
+                //Käivita KuvaElektrihind vajalik meetod, mis tagastab soovitud kujul elektrihinnad
+                elektriHind.kuvaSuvalineElektriHind((JSONObject) data.get("data"));
                 break;
             default:
                 // code block
