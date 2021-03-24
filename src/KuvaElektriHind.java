@@ -11,15 +11,15 @@ public class KuvaElektriHind {
 
     public KuvaElektriHind(JSONObject jsonElering) {
         this.jsonElering = jsonElering;
-        System.out.println(this.jsonElering);
+
         }
 
 
     public void loeJson(String maa){
         //JSONObject dataMaa = (JSONObject) jsonElering.get("ee");      // 2021-03-2
-        JSONArray dataMaa = (JSONArray) jsonElering.get(maa);
+        JSONArray dataMaa = (JSONArray) jsonElering.get("ee");
 
-        System.out.println(dataMaa);
+        System.out.println("See peaks olema eesti: " + dataMaa);
 
 
 

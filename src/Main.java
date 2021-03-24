@@ -39,10 +39,13 @@ public class Main {
         switch(valik) {
             case 1:
                 //Lase kasutajal valida kuupäevade vahemik
-                kuupäevadeVahemik.getKuupäevad();
+                    //kuupäevadeVahemik.getKuupäevad();
                 //Käivita kasutaja sisestatud kuupäevadega Eleringi päring
-                    eleringInfo.setStart(kuupäevadeVahemik.getAlgusKuuPäev());
-                    eleringInfo.setEnd(kuupäevadeVahemik.getLõppKuuPäev());
+                    //eleringInfo.setStart(kuupäevadeVahemik.getAlgusKuuPäev());
+                    eleringInfo.setStart("2021-03-01 00:00");
+                    //eleringInfo.setEnd(kuupäevadeVahemik.getLõppKuuPäev());
+                    eleringInfo.setEnd("2021-03-05 23:59");
+
                     data = eleringInfo.getEleringData();
 
                 //Käivita KuvaElektrihind vajalik meetod, mis tagastab soovitud kujul elektrihinnad
