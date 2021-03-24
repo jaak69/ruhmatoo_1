@@ -39,19 +39,20 @@ public class Main {
         switch(valik) {
             case 1:
                 //Lase kasutajal valida kuupäevade vahemik
-                    kuupäevadeVahemik.getKuupäevad();
+                kuupäevadeVahemik.getKuupäevad();
                 //Käivita kasutaja sisestatud kuupäevadega Eleringi päring
                     eleringInfo.setStart(kuupäevadeVahemik.getAlgusKuuPäev());
                     eleringInfo.setEnd(kuupäevadeVahemik.getLõppKuuPäev());
                     data = eleringInfo.getEleringData();
 
                 //Käivita KuvaElektrihind vajalik meetod, mis tagastab soovitud kujul elektrihinnad
-                   JSONObject stateData = (JSONObject) data.get("data");
+                    JSONObject stateData = (JSONObject) data.get("data");
+                    KuvaElektriHind jsonData = new KuvaElektriHind(stateData);
+                    jsonData.loeJson("ee");
+                    //JSONArray eeData = (JSONArray) stateData.get("ee");
+                //System.out.println("See on EE data: " + eeData);
 
-                    JSONArray eeData = (JSONArray) stateData.get("ee");
-                    System.out.println("See on EE data: " + eeData);
-
-
+                //TODO
 
                 break;
             case 2:
