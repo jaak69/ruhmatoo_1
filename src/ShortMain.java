@@ -1,10 +1,7 @@
-import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 
 public class ShortMain {
 
@@ -28,12 +25,12 @@ public class ShortMain {
         //Alguskuupöev peab olema varase kui lõpukuupäev
         //Kuupäevade vahe ei tohi olla suurm kui 365 päeva
         //Sisestatud kuupäeva vale formaadikorral kuvatakse veateade
-        SisestatudKuupäevadeKontroll kont = new SisestatudKuupäevadeKontroll(algusKuupäev,lõpuKuupäev);
-        try {
+        SisestatudKuupäevadeKontroll kont = new SisestatudKuupäevadeKontroll();
+        /*try {
             Boolean kuupäevadeKontroll = kont.kuupäevadeKontroll();
         } catch (java.text.ParseException e) {
             System.out.println("Vale kuupäeva formaat. Kuupäev peab olema formaadis - 2021-01-01 00:00");
-        }
+        }*/
 
         System.out.println("Vali mis infot sa soovid Eleringist saada. Valiku kinnitamiseks sisesta\n loetelu ees " +
                 "olev järjenumber");
@@ -58,8 +55,9 @@ public class ShortMain {
         }
 
         //klass, mis tõmbab Eleringi API json infot
-        EleringJsonApi info = new EleringJsonApi(algusKuupäev, lõpuKuupäev, restEndPoint);
-        System.out.println(info.getEleringData());
+        //EleringJsonApi info = new EleringJsonApi(algusKuupäev, lõpuKuupäev, restEndPoint);
+        //System.out.println(info.getEleringData(kuupäevadeVahemik.getAlgusKuuPäev(),
+               // kuupäevadeVahemik.getLõppKuuPäev()));
 
         // Proov leida timestam'ist tund ja kuupäev
         int prooviaeg = 1616115600;
@@ -68,7 +66,8 @@ public class ShortMain {
         System.out.println(hourFromTimestamp);
         System.out.println(dateFromTimestamp);
 
-        KuvaElektriHind  proov = new KuvaElektriHind(info.getEleringData());
+        //KuvaElektriHind  proov = new KuvaElektriHind(info.getEleringData(kuupäevadeVahemik.getAlgusKuuPäev(),
+              //  kuupäevadeVahemik.getLõppKuuPäev()));
 
 
         /*while(true){
