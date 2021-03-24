@@ -39,7 +39,7 @@ public class Main {
         switch(valik) {
             case 1:
                 //Lase kasutajal valida kuupäevade vahemik
-                kuupäevadeVahemik.getKuupäevad();
+                    kuupäevadeVahemik.getKuupäevad();
                 //Käivita kasutaja sisestatud kuupäevadega Eleringi päring
                     eleringInfo.setStart(kuupäevadeVahemik.getAlgusKuuPäev());
                     eleringInfo.setEnd(kuupäevadeVahemik.getLõppKuuPäev());
@@ -49,9 +49,9 @@ public class Main {
                    JSONObject stateData = (JSONObject) data.get("data");
 
                     JSONArray eeData = (JSONArray) stateData.get("ee");
-                System.out.println("See on EE data: " + eeData);
+                    System.out.println("See on EE data: " + eeData);
 
-                //TODO
+
 
                 break;
             case 2:
