@@ -18,53 +18,63 @@ public class KuvaElektriHind {
     // List top 3 salvestamiseks
     private ArrayList<Elektrihind> tipud = new ArrayList<>();
 
+    // List alumise top 3 salvestamiseks
+    private ArrayList<Elektrihind> põhjad = new ArrayList<>();
+
     public void kuvaHomseElektriHinnaTabel(){
     }
 
     public void määratudVahemikuMinMax(JSONObject statesJson, String riik){
-        
-        //maaEE = loeJson(statesJson,riik);                           //SEE KUTSUB LÕPLIKU loeJson meetodi
+
+        // loen JSON objektist andmed
         loeJson(statesJson, riik);
 
-        // Vaatan, kas midagi jäi üldse meelde
-        System.out.println(elektrihind.size());
+        // Määran top'i pikkuse
+        int topPikkus = 1;
 
         // Leian top 3 elektrihinnad
-        System.out.println(top(3));
-        //for (Object aeg: maaEE) {
+        topUp(topPikkus);
 
-            //töötle hind (see peaks olema privaatne meetod, sest käib kõigi andmete tõmbamise variantide kohta
+        // Leian madalamad 3 elektrihinda
+        topDown(topPikkus);
 
-            //töötle timestamp, mida me siit tahame
+        // Väljastan andmed
+        System.out.println("---------------------------------------------------------------");
+        System.out.println("|     Kõrgeim(ad) hin(na)d     |     Madalaim(ad) hin(na)d    |");
+        System.out.println("---------------------------------------------------------------");
 
-            //Min, Max väärtused
-
-        //}
-
-        //kas see meetod tagastab väärtused või prindib lõpptulemuse välja?
+        // Näitan nii mitme anmde komplekti kui pikk on lühim top
+        int ridu = tipud.size();
+        if (põhjad.size() < tipud.size()){
+            ridu = põhjad.size();
+        }
+        for (int i = 0; i < ridu; i++){
+            System.out.println("| " + tipud.get(i).getAeg() + "   -   " + tipud.get(i).getHind() + "  | " + põhjad.get(i).getAeg() + "   -   " + põhjad.get(i).getHind() + "  |");
+        }
+        System.out.println("---------------------------------------------------------------");
     }
 
     public void kuvaSuvalineElektriHind(){
-
     }
 
-    //private JSONArray loeJson(JSONObject statesJson, String riik){    SEE PEAB TULEMA ja ANDMA iNFO VÄLJA
+    //Loeb Json objektist andmed ja lisab need Elektrihind klassi alusel listi elektrihind
     private void loeJson(JSONObject statesJson, String riik){
         JSONArray dataRiik = (JSONArray) statesJson.get(riik);
         for (int i = 0; i < dataRiik.size();i++){
             JSONObject tunniInfo = (JSONObject) dataRiik.get(i);
+
+            // Loeb timestamp'ist kellaaja ja kuupäeva
             String aeg = tunnidTimestampist((Long) tunniInfo.get("timestamp"));
+
+            // Teisendab elektrihinna EUR/MWh ümber senti/kWh
             double hind = Math.round(((double) tunniInfo.get("price"))/10.0*100)/100.0;
-            //System.out.println("Hind " + aeg +  " on " + hind + " senti/kWh");
             Elektrihind tunnihind = new Elektrihind(aeg,hind);
             elektrihind.add(tunnihind);
         }
-        //System.out.println(eesti.);
-        //return (JSONArray) jsonElering.get(riik);                     SEE PEAB LÕPLIKUL OLEMA
     }
 
-    // Elektri top'i arvutamine
-    private ArrayList<Elektrihind> top (int n){
+    // Elektrihinna ülemise top'i arvutamine
+    private ArrayList<Elektrihind> topUp (int n){
         Collections.sort(elektrihind, Collections.reverseOrder());
         if (n > elektrihind.size()){
             n = elektrihind.size();
@@ -75,6 +85,19 @@ public class KuvaElektriHind {
         return tipud;
     }
 
+    // Elektrihinna alumise top'i arvutamine
+    private ArrayList<Elektrihind> topDown (int n){
+        Collections.sort(elektrihind);
+        if (n > elektrihind.size()){
+            n = elektrihind.size();
+        }
+        for (int i = 0; i < n; i++){
+            põhjad.add(elektrihind.get(i));
+        }
+        return põhjad;
+    }
+
+    // Timestamp'i tesendamine
     private String tunnidTimestampist (Long timestamp){
         return new SimpleDateFormat("dd-MM-yyyy hh:mm").format(new Date((timestamp)*1000L));
     }
