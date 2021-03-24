@@ -43,8 +43,8 @@ public class KuvaElektriHind {
         for (int i = 0; i < dataRiik.size();i++){
             JSONObject tunniInfo = (JSONObject) dataRiik.get(i);
             //String tund = tunnidTimestampist((String) tunniInfo.get("timestamp"));
-            //String tund = (String) tunniInfo.get("timestamp");
-            //String hind = (String) tunniInfo.get("price");
+           long tund = (long) tunniInfo.get("timestamp");
+           double hind = Double.valueOf(tunniInfo.get("price");
             System.out.println("Hind " + tunniInfo.get("price") + " ajal " + tunniInfo.get("timestamp"));
 
         }
