@@ -10,3 +10,6 @@ Programi teoimingud
 
 Muud märkused:
 Elering annab elektri hinna E/MWh, et tavakasutajale hind reaalsemana paistaks, tuleks see ümber konvertida senti/kWh
+
+Elektrihinnad<ArrayList>
+
