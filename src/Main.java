@@ -46,10 +46,11 @@ public class Main {
                     data = eleringInfo.getEleringData();
 
                 //Käivita KuvaElektrihind vajalik meetod, mis tagastab soovitud kujul elektrihinnad
-                   JSONObject stateData = (JSONObject) data.get("data");
-
-                    JSONArray eeData = (JSONArray) stateData.get("ee");
-                System.out.println("See on EE data: " + eeData);
+                    JSONObject stateData = (JSONObject) data.get("data");
+                    KuvaElektriHind jsonData = new KuvaElektriHind(stateData);
+                    jsonData.loeJson("ee");
+                    //JSONArray eeData = (JSONArray) stateData.get("ee");
+                //System.out.println("See on EE data: " + eeData);
 
                 //TODO
 
