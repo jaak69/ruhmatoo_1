@@ -9,36 +9,19 @@ public class KuvaElektriHind {
 
     private JSONObject jsonElering;
 
-    public KuvaElektriHind(JSONObject jsonElering) {
-        this.jsonElering = jsonElering;
-
-        }
-
-
     public void loeJson(String maa){
         //JSONObject dataMaa = (JSONObject) jsonElering.get("ee");      // 2021-03-2
         JSONArray dataMaa = (JSONArray) jsonElering.get("ee");
 
         System.out.println("See peaks olema eesti: " + dataMaa);
 
-
-
-
         }
 
-
-
-
-        /*JSONArray country = (JSONArray) jsonElering.get("ee");
-        Iterator<JSONObject> iterator = country.iterator();
-        while (iterator.hasNext()){
-            System.out.println("Järgmine: 2" + iterator.next());
-            */
 
     public void kuvaHomseElektriHinnaTabel(){
     }
 
-    public void kuvaMaxMinElektriHind(){
+    public void määratudVahemikuMinMax(JSONObject statesJson, String maa){
         //System.out.println(JSONObject jsonElering);
         //Kuvab valitud perioodil 3 min hinda koos kuupäevaga ja 3 max hinda koos kuuupäevaga
 

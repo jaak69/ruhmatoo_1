@@ -27,6 +27,10 @@ public class Main {
         //Kasutaja menüü sisestus
         Scanner scan = new Scanner(System.in);
 
+        //Kuva elektrihind objekt
+
+        KuvaElektriHind elektriHind = new KuvaElektriHind();
+
         System.out.println("Vali mis infot sa soov2id Eleringist saada. Valiku kinnitamiseks sisesta\n loetelu ees " +
                 "olev järjenumber");
         System.out.println("1. Määratud perioodi kõrgeim ja madalamim hind.");
@@ -45,15 +49,12 @@ public class Main {
                     eleringInfo.setStart("2021-03-01 00:00");
                     //eleringInfo.setEnd(kuupäevadeVahemik.getLõppKuuPäev());
                     eleringInfo.setEnd("2021-03-05 23:59");
-
+                //päring Eleringi
                     data = eleringInfo.getEleringData();
-
                 //Käivita KuvaElektrihind vajalik meetod, mis tagastab soovitud kujul elektrihinnad
-                    JSONObject stateData = (JSONObject) data.get("data");
-                    KuvaElektriHind jsonData = new KuvaElektriHind(stateData);
-                    jsonData.loeJson("ee");
-                    //JSONArray eeData = (JSONArray) stateData.get("ee");
-                //System.out.println("See on EE data: " + eeData);
+                //Riik on esialgu ainult Eesti
+                    elektriHind.määratudVahemikuMinMax(JSONObject data.get("data"),"ee");
+
 
                 //TODO
 
