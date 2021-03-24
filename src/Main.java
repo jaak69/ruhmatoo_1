@@ -53,7 +53,7 @@ public class Main {
                     data = eleringInfo.getEleringData();
                 //Käivita KuvaElektrihind vajalik meetod, mis tagastab soovitud kujul elektrihinnad
                 //Riik on esialgu ainult Eesti
-                    elektriHind.määratudVahemikuMinMax(JSONObject data.get("data"),"ee");
+                    elektriHind.määratudVahemikuMinMax((JSONObject) data.get("data"),"ee");
 
 
                 //TODO
