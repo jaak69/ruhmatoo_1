@@ -44,7 +44,7 @@ public class Main {
                     eleringInfo.setStart(kuupäevadeVahemik.getAlgusKuuPäev());
                     eleringInfo.setEnd(kuupäevadeVahemik.getLõppKuuPäev());
                     data = eleringInfo.getEleringData();
-                //System.out.println(data);
+
                 //Käivita KuvaElektrihind vajalik meetod, mis tagastab soovitud kujul elektrihinnad
                    JSONObject stateData = (JSONObject) data.get("data");
 

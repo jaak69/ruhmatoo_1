@@ -9,6 +9,7 @@ public class KuvaElektriHind {
 
     public KuvaElektriHind(JSONObject jsonElering) {
         this.jsonElering = jsonElering;
+        System.out.println(this.jsonElering);
     }
 
     public void loeJson(JSONObject jsonElering){
