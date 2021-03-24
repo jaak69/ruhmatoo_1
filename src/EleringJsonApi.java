@@ -17,10 +17,24 @@ public class EleringJsonApi {
     private String baseUrl="https://dashboard.elering.ee";
     private URL url;
 
-    public EleringJsonApi(String start, String end, String restEndPoint) {
-        this.start = start;
-        this.end = end;
+    public EleringJsonApi(String restEndPoint) {
         this.restEndPoint = restEndPoint;
+    }
+    //setter Elering API end point muutmiseks
+    public void setRestEndPoint(String restEndPoint) {
+        this.restEndPoint = restEndPoint;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
+    }
+
+    private void setEleringApiUrl(){
+
         String urlString;
         urlString =
                 this.baseUrl + this.restEndPoint + "?" + "start=" + URLEncoder.encode(this.start) + "&end=" + URLEncoder.encode(this.end);
@@ -34,6 +48,8 @@ public class EleringJsonApi {
     }
 
     public JSONObject getEleringData() throws IOException, ParseException {
+
+        setEleringApiUrl();
 
         HttpURLConnection conn = (HttpURLConnection) this.url.openConnection();
         //Elering API nõuab GET meetodit
