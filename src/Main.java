@@ -33,9 +33,9 @@ public class Main {
 
         System.out.println("Vali mis infot sa soovid Eleringist saada. Valiku kinnitamiseks sisesta\n loetelu ees " +
                 "olev järjenumber");
-        System.out.println("1. Määratud perioodi kõrgeim ja madalamim hind.");
+        System.out.println("1. Määratud perioodi kõrgeim, madalamim ja keskmine hind.");
         System.out.println("2. Näita järgmise 24 tunni 3 kõrgemat ja 3 madalamat tunnihinda.");
-        System.out.println("3. Näita suvalise kuupäeva elektrihinda.");
+        System.out.println("3. Näita suvalise kuupäeva nelja elektrituru elektrihindu.");
         System.out.println("4. Lõpeta programmi töö.");
         //Salvesta kasutaja valik1
         int valik = scan.nextInt();

@@ -64,14 +64,28 @@ public class KuvaElektriHind {
         // Leiab madalamad n elektrihinda
         topDown(topPikkus);
 
+        // Leiab perioodi keskmise elektrihinna
+        double keskmine = leiaKeskmine();
+
         // Väljastab andmed
-        System.out.println("---------------------------------------------------------------");
-        System.out.println("|     Kõrgeim(ad) hin(na)d     |     Madalaim(ad) hin(na)d    |");
-        System.out.println("---------------------------------------------------------------");
-        for (int i = 0; i < topPikkus; i++){
-            System.out.printf("%1s%19s%4s%.2f%4s%19s%4s%.2f%5s", "|", tipud.get(i).getAeg(), " ", tipud.get(i).getHind(), "|", põhjad.get(i).getAeg(), " ", põhjad.get(i).getHind(), "|\n");
+        System.out.println("----------------------------------------------------------------------------------------------");
+        System.out.println("|     Kõrgeim(ad) hin(na)d     |     Madalaim(ad) hin(na)d    |         Keskmine hind        |");
+        System.out.println("----------------------------------------------------------------------------------------------");
+        System.out.printf("%1s%19s%4s%.2f%4s%19s%4s%.2f%4s%14s%.2f%14s", "|", tipud.get(0).getAeg(), " ", tipud.get(0).getHind(), "|", põhjad.get(0).getAeg(), " ", põhjad.get(0).getHind(), "|" ," ", keskmine, "|\n");
+
+
+        // Kui soovitakse pikemat top listi, siis lisab ülejäänud andmed
+        if (tipud.size()>1){
+            System.out.println("                                                              --------------------------------");
+            for (int i = 1; i < topPikkus; i++){
+                System.out.printf("%1s%19s%4s%.2f%4s%19s%4s%.2f%5s", "|", tipud.get(i).getAeg(), " ", tipud.get(i).getHind(), "|", põhjad.get(i).getAeg(), " ", põhjad.get(i).getHind(), "|\n");
+            }
+            System.out.println("---------------------------------------------------------------");
         }
-        System.out.println("---------------------------------------------------------------");
+        else{
+            System.out.println("----------------------------------------------------------------------------------------------");
+        }
+
     }
 
     public void kuvaSuvalineElektriHind(JSONObject statesJson){
@@ -140,6 +154,16 @@ public class KuvaElektriHind {
             põhjad.add(elektrihind.get(i));
         }
         return põhjad;
+    }
+
+    // Keskmise elektrihinna leidmine
+    private double leiaKeskmine (){
+        double summa = 0.0;
+        int pikkus;
+        for (int i = 0; i<elektrihind.size();i++){
+            summa += elektrihind.get(i).getHind();
+        }
+        return Math.round(summa/ elektrihind.size()*100)/100.0;
     }
 
     // Timestamp'i tesendamine
