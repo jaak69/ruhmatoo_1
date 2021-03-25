@@ -39,13 +39,13 @@ public class KuvaElektriHind {
         System.out.println("| Kõrgeimad                           |");
         System.out.println("---------------------------------------");
         for (int i = 0; i < tipud.size();i++){
-            System.out.println("|  " + tipud.get(i).getAeg() + "     |     " + tipud.get(i).getHind() + "    |");
+            System.out.printf("%1s%19s%6s%5s%.2f%5s", "|", tipud.get(i).getAeg(), "|", " ", tipud.get(i).getHind(), "|\n");
         }
         System.out.println("---------------------------------------");
         System.out.println("| Madalaimad                          |");
         System.out.println("---------------------------------------");
         for (int i = 0; i < põhjad.size();i++){
-            System.out.println("|  " + põhjad.get(i).getAeg() + "     |     " + põhjad.get(i).getHind() + "    |");
+            System.out.printf("%1s%19s%6s%5s%.2f%5s", "|", põhjad.get(i).getAeg(), "|", " ", põhjad.get(i).getHind(), "|\n");
         }
         System.out.println("---------------------------------------");
     }
@@ -69,7 +69,7 @@ public class KuvaElektriHind {
         System.out.println("|     Kõrgeim(ad) hin(na)d     |     Madalaim(ad) hin(na)d    |");
         System.out.println("---------------------------------------------------------------");
         for (int i = 0; i < topPikkus; i++){
-            System.out.println("| " + tipud.get(i).getAeg() + "   -   " + tipud.get(i).getHind() + "  | " + põhjad.get(i).getAeg() + "   -   " + põhjad.get(i).getHind() + "  |");
+            System.out.printf("%1s%19s%4s%.2f%4s%19s%4s%.2f%5s", "|", tipud.get(i).getAeg(), " ", tipud.get(i).getHind(), "|", põhjad.get(i).getAeg(), " ", põhjad.get(i).getHind(), "|\n");
         }
         System.out.println("---------------------------------------------------------------");
     }
@@ -97,7 +97,7 @@ public class KuvaElektriHind {
         System.out.println("| Aeg                  |     Eesti    |     Läti     |     Leedu    |     Soome    |");
         System.out.println("------------------------------------------------------------------------------------");
         for (int i = 0; i < eesti.size(); i++){
-            System.out.println("|   " + eesti.get(i).getAeg() + "   |      " + eesti.get(i).getHind() + "    |      " + läti.get(i).getHind() + "    |      " + leedu.get(i).getHind() + "    |      " + soome.get(i).getHind() + "    |");
+            System.out.printf("%1s%19s%4s%7s%.2f%4s%7s%.2f%4s%7s%.2f%4s%7s%.2f%5s", "|", eesti.get(i).getAeg(),"|"," ",eesti.get(i).getHind(),"|"," ",läti.get(i).getHind(),"|"," ",leedu.get(i).getHind(),"|"," ",soome.get(i).getHind(),"|\n");
         }
         System.out.println("------------------------------------------------------------------------------------");
     }
