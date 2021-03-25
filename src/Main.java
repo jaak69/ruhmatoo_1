@@ -54,10 +54,6 @@ public class Main {
                 //Käivita KuvaElektrihind vajalik meetod, mis tagastab soovitud kujul elektrihinnad
                 //Riik on esialgu ainult Eesti
                     elektriHind.määratudVahemikuMinMax((JSONObject) data.get("data"),"ee");
-
-
-                //TODO
-
                 break;
             case 2:
                 //Määra algusaeg päringu hetkest + 24H
@@ -70,12 +66,6 @@ public class Main {
 
                 //Käivita KuvaElektrihind vajalik meetod, mis tagastab soovitud kujul elektrihinnad
                 elektriHind.kuvaHomseElektriHinnaTabel((JSONObject) data.get("data"),"ee");
-
-
-
-                //TODO
-
-
                 break;
             case 3:
                 // code block
@@ -91,26 +81,5 @@ public class Main {
             default:
                 // code block
         }
-
-
-
-       /* JSONObject data = info.getEleringData();
-
-        JSONArray data2 = data.getJSONArray("data");
-
-        System.out.println(info.getEleringData());
-*/
-        //KuvaElektriHind proov = new KuvaElektriHind(info.getEleringData());
-        //System.out.println(proov);
-        /*while(true){
-            //kasutaja sisestus siia menüü number mida ta tahab käivitada
-
-            int menuItemNumber;
-
-            doSomething();
-            doSomethingElse();
-            System.out.println("some debugging info");
-            doAnotherThing();
-        }*/
     }
 }
