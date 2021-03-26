@@ -76,6 +76,7 @@ public class KuvaElektriHind {
 
     public void kuvaSuvalineElektriHind(JSONObject statesJson){
         // Loeb andmed Eesti kohta
+        System.out.println(statesJson);
         loeJson(statesJson,"ee");
         ArrayList<Elektrihind> eesti = (ArrayList<Elektrihind>) elektrihind.clone();
         elektrihind.clear();
@@ -146,5 +147,4 @@ public class KuvaElektriHind {
     private String tunnidTimestampist (Long timestamp){
         return new SimpleDateFormat("dd-MM-yyyy hh:mm").format(new Date((timestamp)*1000L));
     }
-
 }
