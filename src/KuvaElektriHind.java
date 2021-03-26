@@ -19,6 +19,10 @@ public class KuvaElektriHind {
     private ArrayList<Elektrihind> põhjad = new ArrayList<>();
 
     public void kuvaHomseElektriHinnaTabel(JSONObject statesJson, String riik){
+        // Tühjendab (olemasolul) eelneva ülesande korral korjatud andmed
+        elektrihind.clear();
+        tipud.clear();
+        põhjad.clear();
 
         // Loeb JSON objektist andmed
         loeJson(statesJson, riik);
@@ -52,6 +56,10 @@ public class KuvaElektriHind {
     }
 
     public void määratudVahemikuMinMax(JSONObject statesJson, String riik){
+        // Tühjendab (olemasolul) eelneva ülesande korral korjatud andmed
+        elektrihind.clear();
+        tipud.clear();
+        põhjad.clear();
 
         // Loeb JSON objektist andmed
         loeJson(statesJson, riik);
@@ -92,8 +100,12 @@ public class KuvaElektriHind {
     }
 
     public void kuvaSuvalineElektriHind(JSONObject statesJson){
+        // Tühjendab (olemasolul) eelneva ülesande korral korjatud andmed
+        elektrihind.clear();
+        tipud.clear();
+        põhjad.clear();
+
         // Loeb andmed Eesti kohta
-        System.out.println(statesJson);
         loeJson(statesJson,"ee");
         ArrayList<Elektrihind> eesti = (ArrayList<Elektrihind>) elektrihind.clone();
         elektrihind.clear();
@@ -172,6 +184,6 @@ public class KuvaElektriHind {
 
     // Timestamp'i tesendamine
     private String tunnidTimestampist (Long timestamp){
-        return new SimpleDateFormat("dd-MM-yyyy hh:mm").format(new Date((timestamp)*1000L));
+        return new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new Date((timestamp)*1000L));
     }
 }
