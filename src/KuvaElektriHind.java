@@ -181,6 +181,7 @@ public class KuvaElektriHind {
         return new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new Date((timestamp)*1000L));
     }
 
+    // Kustutab listidest eelmisl tsüklil kogunenud andmed
     private void nulliListid(){
         elektrihind.clear();
         tipud.clear();
