@@ -35,6 +35,7 @@ public class KuvaElektriHind {
         // Väljastab andmed
         System.out.println("---------------------------------------");
         System.out.println("| Järgneva 24 tunni elektrihinnad     |");
+        System.out.println("| Eestis (senti/kWh)                  |");
         System.out.println("---------------------------------------");
         System.out.println("| Kõrgeimad                           |");
         System.out.println("---------------------------------------");
@@ -68,6 +69,8 @@ public class KuvaElektriHind {
         double keskmine = leiaKeskmine();
 
         // Väljastab andmed
+        System.out.println("----------------------------------------------------------------------------------------------");
+        System.out.println("|     Valitud perioodi elektrihindade info (senti/kWh)        |    Piirkond:   Eesti         |");
         System.out.println("----------------------------------------------------------------------------------------------");
         System.out.println("|     Kõrgeim(ad) hin(na)d     |     Madalaim(ad) hin(na)d    |         Keskmine hind        |");
         System.out.println("----------------------------------------------------------------------------------------------");
